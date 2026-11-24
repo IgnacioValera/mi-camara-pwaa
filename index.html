@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="PWA de práctica con permiso consciente y control de cámara.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Mi Cámara">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Mi Cámara PWA</title>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header><p class="eyebrow">Práctica PWA</p><h1>Mi Cámara</h1><p class="subtitle">Instalación y acceso responsable a la cámara</p></header>
+    <section class="card" aria-labelledby="cam-title">
+      <h2 id="cam-title">Cámara del dispositivo</h2>
+      <div class="camera-frame">
+        <video id="visor-camara" autoplay muted playsinline webkit-playsinline aria-label="Vista previa de la cámara" hidden></video>
+        <p id="placeholder">La cámara está apagada.</p>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">Lista para iniciar.</p>
+      <div class="actions">
+        <button type="button" id="btn-preparar-camara">Abrir cámara</button>
+        <button type="button" id="btn-alternar-camara" class="secondary" disabled>Cambiar cámara</button>
+        <button type="button" id="btn-apagar-camara" class="secondary" disabled>Apagar cámara</button>
+      </div>
+    </section>
+    <section class="card" aria-labelledby="install-title">
+      <h2 id="install-title">Instalar aplicación</h2>
+      <p id="install-message">Puedes agregar esta aplicación a la pantalla de inicio.</p>
+      <button type="button" id="btn-instalar" hidden>Instalar aplicación</button>
+    </section>
+    <p class="footnote">Tu cámara solo se activa cuando autorizas su uso. No se toman ni envían fotografías.</p>
+  </main>
+  <div id="aviso-permiso" class="modal" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="permission-title" aria-describedby="permission-description">
+      <h2 id="permission-title">¿Quieres usar tu cámara?</h2>
+      <p id="permission-description">Esta aplicación necesita acceso a tu cámara trasera o frontal únicamente para mostrar una vista previa local en pantalla. No se capturan, guardan ni envían imágenes a servidores externos. Solo al continuar se solicitará el permiso del navegador.</p>
+      <div class="actions"><button type="button" id="btn-confirmar-permiso">Continuar</button><button type="button" id="btn-cancelar" class="secondary">Cancelar</button></div>
+    </div>
+  </div>
+</body>
+</html>
